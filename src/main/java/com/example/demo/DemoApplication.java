@@ -43,60 +43,7 @@ public class DemoApplication {
             List<Post> posts = postRepository.findAll();
 
 
-            Product product1  = new Product();
-            product1.setName("p1");
 
-            OrderItem orderItem1  = new OrderItem();
-
-
-
-
-
-
-            Employee employee = new Employee();
-            employee.setId(new EmployeeId(1L, 100L));
-            employee.setName("Vlad Mihalcea");
-
-
-            employeeRepository.save(employee);
-           Optional<Employee> employee1 =  employeeRepository.findById(new EmployeeId(1L, 100L));
-           if(employee1.isPresent())
-           {
-               Employee employeefound = employee1.get();
-               log.info("employee found with name:" + employeefound.getName());
-           }
-            // save a few customers
-            repository.save(new Customer("Jack", "Bauer"));
-            repository.save(new Customer("Chloe", "O'Brian"));
-            repository.save(new Customer("Kim", "Bauer"));
-            repository.save(new Customer("David", "Palmer"));
-            repository.save(new Customer("Michelle", "Dessler"));
-
-            // fetch all customers
-            log.info("Customers found with findAll():");
-            log.info("-------------------------------");
-            for (Customer customer : repository.findAll()) {
-                log.info(customer.toString());
-            }
-            log.info("");
-
-            // fetch an individual customer by ID
-            Customer customer = repository.findById(1L);
-            log.info("Customer found with findById(1L):");
-            log.info("--------------------------------");
-            log.info(customer.toString());
-            log.info("");
-
-            // fetch customers by last name
-            log.info("Customer found with findByLastName('Bauer'):");
-            log.info("--------------------------------------------");
-            repository.findByLastName("Bauer").forEach(bauer -> {
-                log.info(bauer.toString());
-            });
-            // for (Customer bauer : repository.findByLastName("Bauer")) {
-            //  log.info(bauer.toString());
-            // }
-            log.info("");
         };
     }
 
